@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Olympic | About Us</title>
+   <link rel="icon" type="image/png" href="..//image/olympic logo.jpg">
+  <style>
+    :root {
+      --bg: #0b132b;
+      --card: #1c2541;
+      --accent: #ffcc00; /* gold */
+      --text: #e6e6e6;
+      --muted: #9fb4c7;
+      --ring-blue: #0085c7;
+      --ring-yellow: #f4c300;
+      --ring-black: #000000;
+      --ring-green: #009f3d;
+      --ring-red: #df0024;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(160deg, var(--bg), #1b2a4a 60%);
+      color: var(--text);
+    }
+
+    header {
+      padding: 48px 24px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Olympic rings */
+    .rings {
+      display: inline-grid;
+      grid-template-columns: repeat(5, 56px);
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .ring {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: transparent;
+      border: 6px solid var(--ring-blue);
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    .ring:nth-child(2) { border-color: var(--ring-yellow); }
+    .ring:nth-child(3) { border-color: var(--ring-black); }
+    .ring:nth-child(4) { border-color: var(--ring-green); }
+    .ring:nth-child(5) { border-color: var(--ring-red); }
+
+    h1 {
+      margin: 8px 0 6px;
+      font-size: 2rem;
+      letter-spacing: 0.5px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 24px auto 64px;
+      padding: 0 20px;
+    }
+
+    .about-card {
+      background: rgba(28, 37, 65, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .mission {
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      color: var(--muted);
+    }
+
+    .profiles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .profile {
+      background: #162036;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2a3b63, #0f1a33);
+      border: 2px solid rgba(255,255,255,0.08);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .name { font-weight: 700; }
+    .role { color: var(--muted); font-size: 0.9rem; }
+
+    .collab {
+      background: #121a2d;
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0b132b;
+      box-shadow: 0 6px 18px rgba(255, 204, 0, 0.25);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn:active { transform: translateY(1px); }
+
+    .achievements {
+      margin-top: 14px;
+      display: none;
+      animation: fadeIn 220ms ease;
+    }
+    .achievements ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .achievements li { margin: 6px 0; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 680px) {
+      .profiles { grid-template-columns: 1fr; }
+      .profile { grid-template-columns: 48px 1fr; }
+      .avatar { width: 48px; height: 48px; font-size: 0.95rem; }
+    }
+    :root {
+      --text: #fff;
+      --accent: #ffcc00;
+      --muted: #ccc;
+      --gold: #ffd700;
+      --silver: #c0c0c0;
+      --bronze: #cd7f32;
+    }
+
+    /* Navbar */
+    .olympic-navbar {
+      background: linear-gradient(90deg, #116130, #191177);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-bottom: 2px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .rings {
+      width: 110px;
+      height: 50px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: yellowgreen;
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Mobile menu */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #0c3f1f;
+        flex-direction: column;
+        width: 220px;
+        display: none;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 16px 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Light theme */
+.light {
+  --bg: #f6f7fb;
+  --bg-soft: #ffffff;
+  --card: #ffffff;
+  --text: #1c2333;
+  --muted: #5b667c;
+  --primary: #2f66ff;
+  --primary-strong: #234fcb;
+  --border: #e4e8f0;
+  --accent: #0ea5e9;
+}
+
+@media (max-width: 820px) {
+  .player-card {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+    <!-- Olympic Navbar -->
+<header class="olympic-navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Olympic Home">
+      <svg class="rings" viewBox="0 0 220 100" aria-hidden="true">
+        <circle cx="40" cy="50" r="25" stroke="#0072CE" fill="none" stroke-width="6"/>
+        <circle cx="85" cy="50" r="25" stroke="#FECB00" fill="none" stroke-width="6"/>
+        <circle cx="130" cy="50" r="25" stroke="#000000" fill="none" stroke-width="6"/>
+        <circle cx="60" cy="75" r="25" stroke="#00A651" fill="none" stroke-width="6"/>
+        <circle cx="105" cy="75" r="25" stroke="#EE1C25" fill="none" stroke-width="6"/>
+      </svg>
+      <span class="nav-title">Olympics</span>
+    </a>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+     <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="game.html">Games</a>
+      <a href="gallery.html">gallery</a>
+      <a href="news.html">News</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="login.html">Login</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="athletes.html">athlethes</a>
+    </nav>
+  </div>
+</header>
+
+  <header>
+    <div class="rings">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+    </div>
+    <h1>About Us</h1>
+    <p class="subtitle">Building an Olympic-inspired profile with collaboration, integrity, and excellence.</p>
+  </header>
+
+  <main class="container">
+    <section class="about-card" aria-label="About the partnership">
+      <div class="mission">
+        <strong>Our mission:</strong> Celebrate the spirit of the Games by crafting a profile that’s fast, accessible, and inspiring—focused on athletes’ stories, results, and values that unite the world.
+      </div>
+
+      <div class="profiles" role="list">
+        <article class="profile" role="listitem" aria-label="Co-founder profile">
+          <div class="avatar" aria-hidden="true">H</div>
+          <div>
+            <div class="name">HINA ZUBAIR</div>
+            <div class="role">Front-End Developer+Office Specialist
+</div>
+            <p>Office and web assistant: Combines MS Office tasks with basic web work.
+Administrative and web support specialist: Emphasizes admin strength plus HTML/CSS/Java Technical administrative assistant: Highlights tech skills within admin duties.
+Junior web and office coordinator: Suitable if she handles small site updates and office workflows.
+ Digital operations assistant: Broader role covering documents, spreadsheets, and site maintenance.
+</p>
+          </div>
+        </article>
+
+        <article class="profile" role="listitem" aria-label="Co-founder profile">
+          <div class="avatar" aria-hidden="true">D</div>
+          <div>
+            <div class="name">DAHAR BATOOL</div>
+            <div class="role">Front-End Developer+Office Specialist</div>
+            <p>Office and web assistant: Combines MS Office tasks with basic web work.
+Administrative and web support specialist: Emphasizes admin strength plus HTML/CSS/Java Technical administrative assistant: Highlights tech skills within admin duties.
+Junior web and office coordinator: Suitable if she handles small site updates and office workflows.
+ Digital operations assistant: Broader role covering documents, spreadsheets, and site maintenance.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="collab">
+        <strong>How we work together:</strong>
+        <p>We pair program weekly, review content with athletes and coaches, and ship small improvements continuously. Every feature maps to a clear user need—results, schedules, and stories—backed by ethical design and inclusive language.</p>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="toggleAchievements" aria-expanded="false" aria-controls="achievements">
+            See our highlights
+          </button>
+          <button class="btn btn-secondary" id="contactBtn">Contact</button>
+        </div>
+
+        <div class="achievements" id="achievements" role="region" aria-label="Team achievements">
+          <ul>
+            <li><strong>Performance:</strong> 95+ Lighthouse scores on mobile for key pages.</li>
+            <li><strong>Accessibility:</strong> WCAG 2.2 AA coverage with semantic markup and keyboard-first navigation.</li>
+            <li><strong>Scale:</strong> Component library serving schedules, medal tables, and profiles across events.</li>
+            <li><strong>Content:</strong> Athlete stories localized for 8 regions with consistent editorial voice.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Olympic Profile Partnership — Crafted with respect for athletes, fans, and the values of the Games.
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleAchievements');
+    const panel = document.getElementById('achievements');
+    const contactBtn = document.getElementById('contactBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = panel.style.display === 'block';
+      panel.style.display = isOpen ? 'none' : 'block';
+      toggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      toggleBtn.textContent = isOpen ? 'See our highlights' : 'Hide highlights';
+    });
+
+    contactBtn.addEventListener('click', () => {
+      alert('Thanks for reaching out! Email us at partners@olympicprofile.example');
+    });
+  </script>
+   <script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Dreamweaver | Athletes</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+ <link rel="icon" type="image/png" href="..//image/olympic logo.jpg">
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body{
+              color: white;
+            }
+
+          .h1{
+            text-transform: uppercase;
+            text-align: center;
+            padding: 60px 0 100px;
+            font-weight: bold;
+            font-size: 60PX;
+          }  
+          .h1::after{
+            content: "";
+            width: 100px;
+            height: 5px;
+            display: block;
+             margin: 10px auto 0;
+             border-radius:10px ;
+            background-color: #254b24;
+          }
+          .cart img{
+          
+          
+          margin-top: 40px;
+          height: 150px;
+          width: 150px;
+          border-radius: 50%;
+         
+          }
+          /* reponsivenav */
+ :root {
+      --text: #fff;
+      --accent: #ffcc00;
+      --muted: #ccc;
+      --gold: #ffd700;
+      --silver: #c0c0c0;
+      --bronze: #cd7f32;
+    }
+
+    /* Navbar */
+    .olympic-navbar {
+      background: linear-gradient(90deg, #116130, #191177);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-bottom: 2px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .rings {
+      width: 110px;
+      height: 50px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: yellowgreen;
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Mobile menu */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #0c3f1f;
+        flex-direction: column;
+        width: 220px;
+        display: none;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Responsive cards */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+
+    .cards {
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .cards img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-content {
+      padding: 1rem;
+      color: var(--text);
+    }
+
+    /* Responsive text */
+    h1.relataed, h2.ht {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      text-align: center;
+    }
+
+    .home .content h3 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+    .home .content span {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    .home .content p {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    /* Footer responsive */
+    @media (max-width: 900px) {
+      .footer-middle {
+        grid-template-columns: 1fr;
+      }
+      .social-news {
+        grid-template-columns: 1fr;
+      }
+      .quick-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+      .brand { flex-wrap: wrap; }
+      .newsletter {
+        grid-template-columns: 1fr;
+      }
+    }
+          .text{
+            color: white;
+          }
+          .cart{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          .text a i:hover{
+            color: rgb(160, 28, 28);
+          }
+          .text a i{
+            font-size: 20px;
+            color: #205c08;
+          }
+          .text-center  p{
+            color: white;
+          }
+          .text-center {
+            color: white;
+          }
+         
+          .col-12{
+             flex-basis: 25%;
+  padding: 10px;
+  min-width: 200px;
+  margin-bottom: 50px;
+  transition: transform 0.3s;
+          }
+          .col-12:hover{
+            transform: translateY(-5px);
+          }
+           
+    .helllo{
+      color: rgb(255, 255, 255);
+     
+    }
+
+
+.olympic-navbar {
+  background: linear-gradient(90deg, #116130, #191177);
+  color: var(--text);
+  padding-right: 20px;
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.py-5{background: linear-gradient(90deg, #0c3f1f, #150f52); }
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.rings {
+  width: 110px;
+  height: 50px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+  
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: yellowgreen;
+  transition: width .3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--accent), #ff7a1a);
+  color: #0a0c12;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-cta:hover {
+  filter: brightness(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; 
+  }
+}
+
+    .col-lg-6{margin-top: 9%;}
+    .hero {
+      background-image: url(athletes-1867185_1280.jpg);
+      color: #ffffff;
+      padding: 80px 0;
+  height: 700px;
+       background-size: cover;
+    }
+    .section-title {
+      font-weight: 700;
+    }
+    .brand-text {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-left: 8px;
+    }
+    .footer {
+      
+      padding: 24px 0;
+      margin-top: 40px;
+    }
+  #mainNav{font-size: 17px;  }
+  
+
+* { box-sizing: border-box; }
+
+.olympic-footer {
+  color: var(--text);
+
+   background: linear-gradient(90deg,#205c08, #0d1364);
+  padding: 2rem 1rem 1rem;
+  border-top: 2px solid rgba(255,255,255,0.06);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.olympic-footer a { color: var(--text); text-decoration: none; }
+.olympic-footer a:hover { color: white; text-decoration: underline; }
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rings { width: 220px; height: 100px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));max-width: 200px; padding-right: 20px;padding: auto;}
+
+.countdown {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .5rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.countdown-label { color: var(--text); }
+.countdown-event { color: var(--accent); }
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1rem;
+  justify-content: flex-end;
+}
+.quick-links a {
+  padding: .4rem .65rem;
+  border-radius: .5rem;
+  background: rgba(255,255,255,0.06);
+}
+.quick-links a:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Middle section */
+.footer-middle {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  padding: 1.25rem 0;
+}
+
+.past-games h3,
+.social h3,
+.newsletter h3 {
+  margin: 0 0 .5rem;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.past-games ul,
+.social ul {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: grid;
+  gap: .4rem;
+}
+
+.past-games a {
+  display: inline-block;
+  padding: .3rem .5rem;
+  border-radius: .4rem;
+  background: rgba(255,255,255,0.05);
+}
+.past-games a:hover { background: rgba(255,255,255,0.12); }
+
+.social-news {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.medal {
+  display: inline-block;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #0a0c12;
+  background: var(--gold);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.3);
+}
+.medal-gold { background: var(--gold); }
+.medal-silver { background: var(--silver); }
+.medal-bronze { background: var(--bronze); }
+.social li { display: inline; margin-right: .5rem; }
+
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .5rem;
+  align-items: center;
+}
+.newsletter input {
+  width: 100%;
+  padding: .6rem .75rem;
+  border-radius: .5rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+}
+.active{
+  color: black;
+  font-size: xx-large;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.newsletter input::placeholder { color: #cbd2e3; }
+
+.newsletter button {
+  padding: .6rem .9rem;
+  border-radius: .5rem;
+  border: 0;
+  background: linear-gradient(135deg, var(--accent), #ff7a1a);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.newsletter button:hover { filter: brightness(1.05); }
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .78rem 2.1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  
+}
+.footer-bottom p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .rings { width: 180px; height: 80px; }
+  .footer-middle {
+    grid-template-columns: 1fr;
+  }
+  .social-news {
+    grid-template-columns: 1fr;
+  }
+  .quick-links { justify-content: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+  .brand { flex-wrap: wrap; }
+  .newsletter {
+    grid-template-columns: 1fr;
+  }
+}
+.me{
+  background-image: url(./images/bg.jpg);
+  /* background-color: #0d1364; */
+  /* border: 2px solid transparent; */
+  border-radius: 30px;
+  /* box-shadow: 2px 2px 2px rgb(82, 80, 80); */
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+ margin-left: 150px;
+}
+.my{
+  background-image: url(./images/bg.jpg);
+   background-position: center;
+  background-size: cover;
+   /* border: 2px solid transparent; */
+  border-radius: 30px;
+  /* box-shadow: 2px 2px 2px rgb(92, 91, 91); */
+   
+   margin-left: 150px;
+}
+.hhh{
+    transition: transform 0.3s;
+    box-shadow: #150f52;
+}
+.hhh:hover{
+        transform: translateY(-5px);
+       
+    }
+
+
+.medal-gold{background: #02589e;}
+.medal-silver{background: rgb(177, 10, 46);}
+.medal-bronze{background: rgb(0, 0, 0);}
+.nav-title{font-weight: bold;font-size: 30px; ;}
+.bg-light{background-color: #2a375e;}
+  </style>
+        
+    </head>
+
+    <body style="background: linear-gradient(90deg,#205c08, #0d1364);">
+<!-- Olympic Navbar -->
+<header class="olympic-navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Olympic Home">
+      <svg class="rings" viewBox="0 0 220 100" aria-hidden="true">
+        <circle cx="40" cy="50" r="25" stroke="#0072CE" fill="none" stroke-width="6"/>
+        <circle cx="85" cy="50" r="25" stroke="#FECB00" fill="none" stroke-width="6"/>
+        <circle cx="130" cy="50" r="25" stroke="#000000" fill="none" stroke-width="6"/>
+        <circle cx="60" cy="75" r="25" stroke="#00A651" fill="none" stroke-width="6"/>
+        <circle cx="105" cy="75" r="25" stroke="#EE1C25" fill="none" stroke-width="6"/>
+      </svg>
+      <span class="nav-title">Olympics</span>
+    </a>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="game.html">Games</a>
+      <a href="athletes1.html">Athletes</a>
+      <a href="news.html">News</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="login.html">Login</a>
+      <a href="faqs1.html">FAQs</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+
+
+        <h1 class="h1">atletes</h1>
+        
+   <!-- <div class="container hhh my-5">
+            <div style="width: 70vw;" class="row gap-5 mx-auto">
+
+            
+            <div class=" me card  d-flex align-items-center justify-content-center gap-4" style="width: 20vw; height: 400px">
+
+                <div class="icon">
+                   
+                  <i class="fa-solid fa-futbol text-white display-4"></i>
+                </div>
+
+                <div class="desc text-white text-center">
+                    <h1>Games</h1>
+                    <h4 id="user"></h4>
+                </div>
+
+            </div>
+
+            <div class="card  my  d-flex align-items-center justify-content-center gap-4" style="width: 20vw; height: 400px">
+
+                <div class="icon">
+                    <i class="fa-solid  fa-skating text-white display-4"></i>
+                </div>
+
+                <div class="desc text-white text-center">
+                    <h1>Athletes</h1>
+                    <h4 id="projects"></h4>
+                </div>
+
+            </div>
+
+            
+
+            </div>
+
+        </div> -->
+        <!-- </div> -->
+
+
+
+        <!-- <script>
+       
+    
+
+            count1 = 1
+            var ty = setInterval(userdone,20)
+            function userdone(){
+                count1++
+                document.getElementById("user").innerHTML = count1 + "+"
+                if(count1==50){
+                    clearInterval(ty)
+                }
+            }
+
+
+            count2 = 1
+            var ty1 = setInterval(prdone,10)
+            function prdone(){
+                count2++
+                document.getElementById("projects").innerHTML = count2 + "+"
+                if(count2==500){
+                    clearInterval(ty1)
+                }
+            }
+      
+        </script> -->
+        <section id="cards">
+
+                <div class="container">
+                    <div class="row ">
+
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="simmonbiles.html"><img src="../image/Simone-Biles.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>SIMMON BILES</h4> 
+                                   <p  class="helllo card-text text-light">USA</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+
+                          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="lebronjames.html"><img src="../image/LeBron_James_(51959977144)_(cropped2).jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>LEBRON JAMES</h4> 
+                                   <p  class="helllo card-text text-light ">USA,Basket ball</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="cocogauf.html"><img src="../image/Coco_Gauff_2022_US_Open_001.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>COCO GAUFF</h4> 
+                                   <p  class="helllo card-text text-light ">USA,Tennis</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="armand.html"><img src="../image/Armand_Duplantis(cropped)_Budapest_2023.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>ARMAND DUPLANTIS</h4> 
+                                   <p  class="helllo card-text text-light ">SWE,Athletics</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="carolinemarks.html"><img src="../image/caroline _marks_1.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>CAROLINE MARKS</h4> 
+                                   <p  class="helllo card-text text-light  ">USA,Surfing</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="noahlyles.html"><img src="../image/Noah_Lyles_Olympic_Games_03.08.2024.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>NOAH LYLES</h4> 
+                                   <p  class="helllo card-text text-light ">USA,Athletics</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="mikeala.html"><img src="../image/mikaela_shiffrin_profile_headshot_908x800.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>MIKEALA SHIFFRIN</h4> 
+                                   <p  class="helllo card-text text-light ">USA,ALPALINE SKIING</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="neerajchopra.html"><img src="../image/NEERAJ_CHOPRA.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>NEERAJ CHOPRA</h4> 
+                                   <p  class="helllo card-text text-light ">IND,Athletics</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="eileengu.html"><img src="../image/EILEEN_GU.jpg"height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>EILEEN GU</h4> 
+                                   <p  class="helllo card-text text-light ">CHINA,Freestyle skiing</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="syndney.html"><img src="../image/Sydney_McLaughlin_Oregon_2022(2).jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>SYNDNEY MCLAUGHLIN</h4> 
+                                   <p  class="helllo card-text text-light ">USA,Athletics</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="stephen.html"><img src="../image/STEPHRN_CURRY.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>STEPHEN CURRY</h4> 
+                                   <p  class="helllo card-text text-light ">USA,Basketball</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="ryssa.html"><img src="../image/RAYSSA LEAL_1.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>RYSSA LEAL</h4> 
+                                   <p  class="helllo card-text text-light ">BRAZIL,Skateboarding</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="victor.html"><img src="../image/Victor_Wembanyama_San_Antonio_Spurs_2024.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>VICTOR WEMBANYAMA</h4> 
+                                   <p  class="helllo card-texttext-light ">FRANCE,Basketball</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="yutoharigome.html"><img src="../image/YUTO_HORIGOME.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>YUTO HORIGOME</h4> 
+                                   <p  class="helllo card-text text-light ">JAPAN,Skateboarding</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="leonmarchand.html"><img src="../image/LEON_MARCHAND.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>LEON MARCHAND</h4> 
+                                   <p  class="helllo card-text text-light ">FRANCE,Swimming</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="yulimar.html"><img src="../image/Yulimar_Rojas_-_Triple_saut_Femmes_(48614911652)_(cropped).jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>YULIMAR ROJAS</h4> 
+                                   <p  class="helllo card-text text-light ">VENEZUELA,Athletics</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="tadejpogacar.html"><img src="../image/2022_Tour_of_Slovenia_(Stage_3,_Tadej_Pogačar_celebrating_victory_on_Celje_Castle_v2).jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>TADEJ POGACAR</h4> 
+                                   <p  class="helllo card-text text-light ">SLOVENIA,Cycling Road</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="llia.html"><img src="../image/LLIA_MALININ.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>LLIA MALININ</h4> 
+                                   <p  class="helllo card-text text-light ">USA,Figure Skating</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="katie.html"><img src="../image/katie_ledecky.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>KATIE LEDECKY</h4> 
+                                   <p  class="helllo card-text text-light ">USA,Swimming</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="cart d-flex mt-2 p-2 position-relative">
+                                <a href="usain.html"><img src="../image/1316693-Usain_Bolt.jpg" height="100px" width="100px" alt=""></a>
+                                
+                                
+                                <div class="text  text-center">
+                                   <h4>USAIN BOLT</h4> 
+                                   <p  class="helllo card-text text-light ">JAMAICA,Athletics</p>
+                                   <a href="#"><i class="fa fa-heart"   data-bs-toggle="modal" data-bs-target="#modalId" aria-hidden="true"></i></a> 
+                                 
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+     
+            <!-- <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+              <ol class="carousel-indicators">
+                  <li
+                      data-bs-target="#carouselId"
+                      data-bs-slide-to="0"
+                      class="active"
+                      aria-current="true"
+                      aria-label="First slide"
+                  ></li>
+                  <li
+                      data-bs-target="#carouselId"
+                      data-bs-slide-to="1"
+                      aria-label="Second slide"
+                  ></li>
+                  <li
+                      data-bs-target="#carouselId"
+                      data-bs-slide-to="2"
+                      aria-label="Third slide"
+                  ></li>
+              </ol>
+              <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item active">
+                      <img
+                          src="images/katie_ledecky.jpg"
+                          height="400px"
+                          width="50%"
+                          class="w-100 d-block"
+                          alt="First slide"
+                      />
+                      <div class="carousel-caption d-none d-md-block">
+                          <a href="./katie.html"><h3>KATIE LEDECKY</h3>
+                            <p>USA,Swimming</p></a>
+
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+                      <img
+                          src="images/Armand_Duplantis(cropped)_Budapest_2023.jpg"
+                          height="400px"
+                          class="w-100 d-block"
+                          alt="Second slide"
+                      />
+                      <div class="carousel-caption d-none d-md-block">
+                          <h3>Lindsey Vonn left "hungry" for more after fourth in Super G at St. Moritz World Cup</h3>
+                          <p>Description</p>
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+                      <img
+                          src="./images/6.jpg"
+                          height="400px"
+                          class="w-100 d-block"
+                          alt="Third slide"
+                      />
+                      <div class="carousel-caption d-none d-md-block">
+                          <h3>Squash World Cup 2025: Anahat Singh seals history as India defeat Hong Kong China to claim maiden title</h3>
+                          <p>Description</p>
+                      </div>
+                  </div>
+              </div>
+              <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselId"
+                  data-bs-slide="prev"
+              >
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselId"
+                  data-bs-slide="next"
+              >
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+              </button>
+          </div>
+   -->
+            
+  <!-- Olympic Footer -->
+<footer class="olympic-footer" aria-label="Site footer">
+  <div class="footer-top">
+    <div class="brand">
+      <!-- Minimal SVG Olympic rings -->
+      <svg class="rings" viewBox="0 0 220 100" aria-hidden="true">
+        <circle cx="40" cy="50" r="25" stroke="#0072CE" fill="none" stroke-width="6"/>
+        <circle cx="85" cy="50" r="25" stroke="#FECB00" fill="none" stroke-width="6"/>
+        <circle cx="130" cy="50" r="25" stroke="#000000" fill="none" stroke-width="6"/>
+        <circle cx="60" cy="75" r="25" stroke="#00A651" fill="none" stroke-width="6"/>
+        <circle cx="105" cy="75" r="25" stroke="#EE1C25" fill="none" stroke-width="6"/>
+      </svg>
+
+      <div class="countdown" role="text" aria-live="polite">
+        <span class="countdown-label">Countdown:</span>
+        <span class="countdown-event">Paris 2028</span>
+        <span class="countdown-sep">—</span>
+        <span class="countdown-time" data-static="945 Days">945 Days</span>
+      </div>
+    </div>
+
+    <nav class="quick-links" aria-label="Quick links">
+      <a href="/">Home</a>
+      <a href="/athletes">Athletes</a>
+      <a href="/schedule">Schedule</a>
+      <a href="/tickets">Tickets</a>
+      <a href="/shop">Shop</a>
+    </nav>
+  </div>
+
+  <div class="footer-middle">
+    <div class="past-games" aria-label="Past Games">
+      <h3>Past Games</h3>
+      <ul>
+        <li><a href="/past/tokyo-2020">Tokyo 2020</a></li>
+        <li><a href="/past/beijing-2008">Beijing 2008</a></li>
+        <li><a href="/past/athens-2004">Athens 2004</a></li>
+        <li><a href="/past">More…</a></li>
+      </ul>
+    </div>
+
+    <div class="social-news">
+      <div class="social" aria-label="Follow us">
+        <h3>Follow us</h3>
+        <ul>
+          <li><a class="medal medal-gold" href="#" aria-label="Facebook">Facebook</a></li>
+          <li><a class="medal medal-silver" href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a class="medal medal-bronze" href="#" aria-label="TikTok">TikTok</a></li>
+        </ul>
+      </div>
+
+      <form class="newsletter" aria-label="Newsletter signup">
+        <h3>Join the Olympic Movement</h3>
+        <label for="email" class="visually-hidden">Email address</label>
+        <input id="email" name="email" type="email" placeholder="Your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© International Olympic Committee</p>
+    <p>Powered by Olympic Spirit</p>
+  </div>
+</footer>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        > </script>
+    </body>
+    <script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+</html>

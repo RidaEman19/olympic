@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Olympic FAQs</title>
+  <style>
+    :root {
+      --bg: #0f172a;          
+      --card: #111827;         
+      --text: #e5e7eb;         
+      --muted: #94a3b8;       
+      --accent: #22c55e;       
+      --accent-2: #3b82f6;     
+      --ring: #f59e0b;         
+      --danger: #ef4444;     
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+     background-color: #0f172a;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      margin: 0;
+    }
+:root {
+      --text: #fff;
+      --accent: #ffcc00;
+      --muted: #ccc;
+      --gold: #ffd700;
+      --silver: #c0c0c0;
+      --bronze: #cd7f32;
+    }
+
+    /* Navbar */
+    .olympic-navbar {
+      background: linear-gradient(90deg, #116130, #191177);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-bottom: 2px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .rings {
+      width: 110px;
+      height: 50px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: yellowgreen;
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Mobile menu */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #0c3f1f;
+        flex-direction: column;
+        width: 220px;
+        display: none;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      text-align: center;
+      
+    }
+
+    .logo {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .ring {
+      width: 18px; height: 18px; border: 3px solid; border-radius: 50%;
+    }
+    .ring.green { border-color: var(--accent); }
+    .ring.blue { border-color: var(--accent-2); }
+    .ring.yellow { border-color: var(--ring); }
+    .ring.black { border-color: #6391f5; background: #111827; }
+    .ring.red { border-color: var(--danger); }
+
+    h1 {
+      font-size: 2rem;
+      margin: 8px 0 6px;
+      letter-spacing: 0.3px;
+      color: aliceblue;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .faq {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(148,163,184,0.18);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+    .faq-item:focus-within {
+      border-color: rgba(34,197,94,0.7);
+      transform: translateY(-1px);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      background: transparent;
+      color: var(--text);
+      padding: 16px 18px;
+      text-align: left;
+      font-size: 1rem;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .faq-question:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
+    .faq-question .q-text {
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .faq-question .chevron {
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      color: var(--text);
+      transition: transform 200ms ease;
+    }
+
+    .faq-item[aria-expanded="true"] .chevron {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 260ms ease, padding 200ms ease;
+      padding: 0 18px;
+      color: var(--text);
+    }
+
+    .faq-item[aria-expanded="true"] .faq-answer {
+      padding: 0 18px 16px 18px;
+    }
+
+    .faq-answer p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.975rem;
+    }
+
+    .footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+
+    .btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(148,163,184,0.28);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 160ms ease, border-color 160ms ease, transform 120ms ease;
+    }
+    .btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(148,163,184,0.5);
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+    .btn.primary {
+      border-color: rgba(34,197,94,0.6);
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.6rem; }
+      .faq-question { padding: 14px 14px; }
+      .faq-answer { padding: 0 14px; }
+    }
+    
+  </style>
+</head>
+<body>
+    <!-- Olympic Navbar -->
+<header class="olympic-navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Olympic Home">
+      <svg class="rings" viewBox="0 0 220 100" aria-hidden="true">
+        <circle cx="40" cy="50" r="25" stroke="#0072CE" fill="none" stroke-width="6"/>
+        <circle cx="85" cy="50" r="25" stroke="#FECB00" fill="none" stroke-width="6"/>
+        <circle cx="130" cy="50" r="25" stroke="#000000" fill="none" stroke-width="6"/>
+        <circle cx="60" cy="75" r="25" stroke="#00A651" fill="none" stroke-width="6"/>
+        <circle cx="105" cy="75" r="25" stroke="#EE1C25" fill="none" stroke-width="6"/>
+      </svg>
+      <span class="nav-title">Olympics</span>
+    </a>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="game.html">Games</a>
+       <a href="news.html">News</a>
+      <a href="gallery.html">gallery</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="login.html">Login</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="athletes.html">athlethes</a>
+    </nav>
+  </div>
+</header>
+
+
+
+
+  <div class="container">
+    <header>
+      <div class="logo" aria-hidden="true">
+        <span class="ring blue"></span>
+        <span class="ring yellow"></span>
+        <span class="ring black"></span>
+        <span class="ring green"></span>
+        <span class="ring red"></span>
+      </div>
+      <h1>Olympic FAQs</h1>
+      <p class="subtitle">Quick answers about the Games—history, rules, hosting, medals, and more.</p>
+      <div class="controls" aria-label="FAQ controls">
+        <button class="btn primary" id="expandAll">Expand all</button>
+        <button class="btn" id="collapseAll">Collapse all</button>
+      </div>
+    </header>
+
+    <main class="faq" id="faqList" aria-label="Frequently asked questions">
+      <!-- FAQ items -->
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a1" aria-expanded="false">
+          <span class="q-text">How often are the Olympic Games held?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a1">
+          <p>The Summer and Winter Olympics are held every four years, alternating every two years. For example, Winter Games occur two years after the previous Summer Games.</p>
+        </div>
+      </section>
+
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a2" aria-expanded="false">
+          <span class="q-text">Who oversees the Olympics?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a2">
+          <p>The International Olympic Committee (IOC) administers the Olympic Movement, sets eligibility and program rules, and selects host cities, working with local organizing committees and international sports federations.</p>
+        </div>
+      </section>
+
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a3" aria-expanded="false">
+          <span class="q-text">How are host cities chosen?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a3">
+          <p>Cities engage in a multi-year dialogue and evaluation process with the IOC, presenting plans for venues, sustainability, legacy, financing, and community support before a final selection is approved.</p>
+        </div>
+      </section>
+
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a4" aria-expanded="false">
+          <span class="q-text">Can professionals compete at the Olympics?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a4">
+          <p>Yes. Most sports allow professional athletes, provided they meet qualification and eligibility criteria set by their international federations and the IOC.</p>
+        </div>
+      </section>
+
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a5" aria-expanded="false">
+          <span class="q-text">How do athletes qualify for the Olympics?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a5">
+          <p>Qualification is sport-specific and typically involves meeting performance standards or earning quota spots via world rankings and designated events. National Olympic Committees select the final teams from qualified athletes.</p>
+        </div>
+      </section>
+
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a6" aria-expanded="false">
+          <span class="q-text">What do the five Olympic rings represent?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a6">
+          <p>The interlaced rings symbolize the union of five regions of the world and the meeting of athletes in fair competition. The colors were chosen so every nation’s flag contains at least one of them.</p>
+        </div>
+      </section>
+
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a7" aria-expanded="false">
+          <span class="q-text">How many sports are in the Olympics?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a7">
+          <p>The program changes over time. The IOC can add or remove sports and events, sometimes including host-proposed sports for a single edition to reflect local interest and global appeal.</p>
+        </div>
+      </section>
+
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a8" aria-expanded="false">
+          <span class="q-text">What is the difference between the Summer and Winter Olympics?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a8">
+          <p>Summer Games feature sports typically played on fields, tracks, courts, and pools. Winter Games focus on ice and snow disciplines like skiing, skating, and sliding sports, using cold-weather venues.</p>
+        </div>
+      </section>
+
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a9" aria-expanded="false">
+          <span class="q-text">How are medals awarded and counted?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a9">
+          <p>Gold, silver, and bronze medals are awarded to first, second, and third place. Medal tables summarize totals by National Olympic Committee, though official rankings prioritize individual performance over national standings.</p>
+        </div>
+      </section>
+
+      <section class="faq-item" aria-expanded="false">
+        <button class="faq-question" aria-controls="a10" aria-expanded="false">
+          <span class="q-text">What is the Olympic torch relay and flame?</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-answer" id="a10">
+          <p>The flame is lit in Olympia, Greece, and travels via a relay to the host city, symbolizing continuity between ancient and modern Games and the spirit of peace and unity.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      Built with HTML, CSS, and JavaScript. Keyboard-friendly: use Tab and Enter/Space to toggle questions.
+    </footer>
+  </div>
+
+  <script>
+    // FAQ interactivity with accessible toggles and smooth height animation
+    (function () {
+      const items = Array.from(document.querySelectorAll('.faq-item'));
+      const expandAllBtn = document.getElementById('expandAll');
+      const collapseAllBtn = document.getElementById('collapseAll');
+
+      function setExpanded(item, expanded) {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        item.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        question.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        // Smooth height based on content
+        if (expanded) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          answer.style.maxHeight = '0px';
+        }
+      }
+
+      items.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        // Initialize height
+        answer.style.maxHeight = '0px';
+
+        question.addEventListener('click', () => {
+          const isOpen = item.getAttribute('aria-expanded') === 'true';
+          setExpanded(item, !isOpen);
+        });
+
+        // Keyboard accessibility: Space/Enter trigger
+        question.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            question.click();
+          }
+        });
+
+        // Recompute height on resize for open items
+        window.addEventListener('resize', () => {
+          if (item.getAttribute('aria-expanded') === 'true') {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+
+      expandAllBtn.addEventListener('click', () => {
+        items.forEach(item => setExpanded(item, true));
+      });
+
+      collapseAllBtn.addEventListener('click', () => {
+        items.forEach(item => setExpanded(item, false));
+      });
+    })();
+  </script>
+  <script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+</body>
+</html>

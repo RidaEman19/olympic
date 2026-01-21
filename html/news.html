@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Olympic | News </title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="..//image/olympic logo.jpg">
+  
+</head>
+<style>
+:root {
+  --bg: #0b0e14;
+  --bg-soft: #121826;
+  --card: #1a2136;
+  --text: #eaf0ff;
+  --muted: #a9b3c8;
+  --primary: #5c7cfa;
+  --primary-strong: #4c6ef5;
+  --border: #2a334d;
+  --accent: #22d3ee;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Segoe UI Emoji";
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0b0e14, #121826 45%, #1a2136 100%);
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+.switch input { display: none; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #2a334d;
+  transition: 0.2s;
+  border-radius: 999px;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px; width: 18px;
+  left: 3px; top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.switch input:checked + .slider {
+  background: var(--primary);
+}
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+.switch-label {
+  color: var(--muted);
+}
+
+.btn {
+  background: var(--primary);
+  color: white;
+  border: 1px solid transparent;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.05s;
+}
+.btn:hover { background: var(--primary-strong); }
+.btn:active { transform: translateY(1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-outline:hover { border-color: var(--primary); }
+
+.player-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+.player-media {
+  overflow: hidden;
+}
+
+.player-content h2 {
+  margin: 0 0 4px;
+  font-size: 1.6rem;
+}
+.player-meta {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.player-bio, .player-achievements, .player-facts {
+  margin-bottom: 16px;
+}
+
+.list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.list li {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.list li:last-child {
+  border-bottom: none;
+}
+
+.list-compact li {
+  padding: 6px 0;
+}
+
+.player-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+.stat {
+  display: grid;
+  place-items: start;
+}
+.stat-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.stat-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.moments {
+  margin: 24px 0 40px;
+}
+.moments .muted {
+  color: var(--muted);
+}
+
+.list-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.list-card li {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--bg-soft);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.05s;
+}
+.list-card li:hover {
+  border-color: var(--primary);
+}
+.list-card li:active {
+  transform: translateY(1px);
+}
+ :root {
+      --text: #fff;
+      --accent: #ffcc00;
+      --muted: #ccc;
+      --gold: #ffd700;
+      --silver: #c0c0c0;
+      --bronze: #cd7f32;
+    }
+
+    /* Navbar */
+    .olympic-navbar {
+      background: linear-gradient(90deg, #116130, #191177);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-bottom: 2px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .rings {
+      width: 110px;
+      height: 50px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: yellowgreen;
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Mobile menu */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #0c3f1f;
+        flex-direction: column;
+        width: 220px;
+        display: none;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 16px 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Light theme */
+.light {
+  --bg: #f6f7fb;
+  --bg-soft: #ffffff;
+  --card: #ffffff;
+  --text: #1c2333;
+  --muted: #5b667c;
+  --primary: #2f66ff;
+  --primary-strong: #234fcb;
+  --border: #e4e8f0;
+  --accent: #0ea5e9;
+}
+
+@media (max-width: 820px) {
+  .player-card {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+<body>
+    <!-- Olympic Navbar -->
+<header class="olympic-navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Olympic Home">
+      <svg class="rings" viewBox="0 0 220 100" aria-hidden="true">
+        <circle cx="40" cy="50" r="25" stroke="#0072CE" fill="none" stroke-width="6"/>
+        <circle cx="85" cy="50" r="25" stroke="#FECB00" fill="none" stroke-width="6"/>
+        <circle cx="130" cy="50" r="25" stroke="#000000" fill="none" stroke-width="6"/>
+        <circle cx="60" cy="75" r="25" stroke="#00A651" fill="none" stroke-width="6"/>
+        <circle cx="105" cy="75" r="25" stroke="#EE1C25" fill="none" stroke-width="6"/>
+      </svg>
+      <span class="nav-title">Olympics</span>
+    </a>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+     <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="game.html">Games</a>
+      <a href="gallery.html">gallery</a>
+      <a href="news.html">News</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="login.html">Login</a>
+      <a href="faqsmain_1.html">FAQs</a>
+      <a href="athletes.html">athlethes</a>
+    </nav>
+  </div>
+</header>
+
+
+
+
+
+
+  <header class="hero">
+    <div class="container">
+      <h1>Olympic Recently news update</h1>
+      <p>Discover career highlights, achievements, and inspiring moments.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Player Selector (optional for future multiple profiles) -->
+    <section class="toolbar" aria-label="Profile toolbar">
+      <div class="toolbar-left">
+        <label for="themeToggle" class="switch">
+          <input id="themeToggle" type="checkbox" aria-label="Toggle dark theme" />
+          <span class="slider"></span>
+        </label>
+        <span class="switch-label">Dark theme</span>
+      </div>
+
+      <div class="toolbar-right">
+        <button id="toggleAchievementsBtn" class="btn" aria-expanded="true">
+          Hide achievements
+        </button>
+        <button id="addFavoriteMomentBtn" class="btn btn-outline">
+          Add favorite moment
+        </button>
+      </div>
+    </section>
+
+    <!-- Player Card -->
+    <section class="player-card" aria-labelledby="player-name">
+      <div class="player-media">
+        <img
+          src="https://images.unsplash.com/photo-1546525848-3ce03ca516f6?q=80&w=1200&auto=format&fit=crop"
+          alt="Olympic athlete celebrating a victory"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="player-content">
+        <h2 id="player-name">Simone Biles</h2>
+        <p class="player-meta">
+          Artistic Gymnast • United States • Multiple-time World and Olympic medalist
+        </p>
+
+        <div class="player-bio">
+          <h3>Biography</h3>
+          <p>
+            Simone Biles is widely regarded as one of the greatest gymnasts of all time. Known for her
+            extraordinary difficulty and execution, she has set numerous records and inspired a new
+            generation through resilience and excellence on the world stage.
+          </p>
+        </div>
+
+        <div class="player-achievements" id="achievementsSection">
+          <h3>Major achievements</h3>
+          <ul id="achievementsList" class="list">
+            <li>
+              <strong>Olympic Gold:</strong> Team, All-Around, Vault, Floor (Rio 2016)
+            </li>
+            <li>
+              <strong>World Championships:</strong> Most world medals and golds by a gymnast
+            </li>
+            <li>
+              <strong>Eponymous Skills:</strong> Multiple elements named “Biles” across vault and floor
+            </li>
+            <li>
+              <strong>Laureus Awards:</strong> Multiple Sportswoman of the Year honors
+            </li>
+          </ul>
+        </div>
+
+        <div class="player-facts">
+          <h3>Fun facts</h3>
+          <ul id="factsList" class="list list-compact">
+            <li><strong>Signature:</strong> The “Biles” on floor involves a double layout with a half twist.</li>
+            <li><strong>Advocacy:</strong> Vocal supporter of athlete mental health and safety.</li>
+          </ul>
+        </div>
+
+        <div class="player-stats">
+          <div class="stat">
+            <span class="stat-value" id="achievementCount">8</span>
+            <span class="stat-label">Achievements listed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="favoriteMomentsCount">13</span>
+            <span class="stat-label">Favorite moments added</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Favorite Moments -->
+    <section class="moments" aria-labelledby="moments-title">
+      <h3 id="moments-title">Your favorite moments</h3>
+      <p class="muted">Add moments you love. Click a moment to reveal details.</p>
+      <ul id="momentsList" class="list list-card"></ul>
+    </section>
+    
+
+  <main class="container">
+    <!-- Player Selector (optional for future multiple profiles) -->
+    <section class="toolbar" aria-label="Profile toolbar">
+      <div class="toolbar-left">
+       
+      </div>
+
+      
+      </div>
+    </section>
+
+    <!-- Player Card -->
+    <section class="player-card" aria-labelledby="player-name">
+      <div class="player-media">
+        <img
+          src="../images/man-462874_1280.jpg"
+          alt="Olympic athlete celebrating a victory"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="player-content">
+        <h2 id="player-name"> Michael Phelps</h2>
+        <p class="player-meta">
+          Artistic Gymnast • United States • Multiple-time World and Olympic medalist
+        </p>
+
+        <div class="player-bio">
+          <h3>Biography</h3>
+          <p>
+           Michael Phelps is the most-decorated Olympian of all time, with 28 medals, 23 of which are gold. He also was the first athlete to win 8 gold medals at a single
+          </p>
+        </div>
+
+        <div class="player-achievements" id="achievementsSection">
+          <h3>Major achievements</h3>
+          <ul id="achievementsList" class="list">
+            <li>
+              <strong>Olympic Gold:</strong> Team, All-Around, Vault, Floor (Rio 2016)
+            </li>
+            <li>
+              <strong>World Championships:</strong> Most world medals and golds by a gymnast
+            </li>
+            <li>
+              <strong>Eponymous Skills:</strong> Multiple elements named “Biles” across vault and floor
+            </li>
+            <li>
+              <strong>Laureus Awards:</strong> Multiple Sportswoman of the Year honors
+            </li>
+          </ul>
+        </div>
+
+        <div class="player-facts">
+          <h3>Fun facts</h3>
+          <ul id="factsList" class="list list-compact">
+            <li><strong>Signature:</strong> The “Biles” on floor involves a double layout with a half twist.</li>
+            <li><strong>Advocacy:</strong> Vocal supporter of athlete mental health and safety.</li>
+          </ul>
+        </div>
+
+        <div class="player-stats">
+          <div class="stat">
+            <span class="stat-value" id="achievementCount">3</span>
+            <span class="stat-label">Achievements listed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="favoriteMomentsCount">9</span>
+            <span class="stat-label">Favorite moments added</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Favorite Moments -->
+    <section class="moments" aria-labelledby="moments-title">
+      <h3 id="moments-title">Your favorite moments</h3>
+      <p class="muted">Add moments you love. Click a moment to reveal details.</p>
+      <ul id="momentsList" class="list list-card"></ul>
+    </section>
+  </main>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Olympic Profiles. For educational use.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+const themeToggle = document.getElementById("themeToggle");
+themeToggle.addEventListener("change", () => {
+  document.body.classList.toggle("light", themeToggle.checked);
+});
+
+// Footer year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Achievements toggle
+const toggleBtn = document.getElementById("toggleAchievementsBtn");
+const achievementsSection = document.getElementById("achievementsSection");
+
+toggleBtn.addEventListener("click", () => {
+  const isHidden = achievementsSection.hidden === true;
+  achievementsSection.hidden = !isHidden;
+  toggleBtn.textContent = isHidden ? "Hide achievements" : "Show achievements";
+  toggleBtn.setAttribute("aria-expanded", String(isHidden));
+});
+
+// Favorite moments add + interactive reveal
+const addFavoriteMomentBtn = document.getElementById("addFavoriteMomentBtn");
+const momentsList = document.getElementById("momentsList");
+const favoriteMomentsCount = document.getElementById("favoriteMomentsCount");
+
+addFavoriteMomentBtn.addEventListener("click", () => {
+  const momentTitle = prompt("Add a favorite moment (e.g., 'Historic floor routine, 2019 Worlds'):");
+  if (!momentTitle) return;
+
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <strong>Moment:</strong> ${escapeHtml(momentTitle)}
+    <div class="moment-detail" style="margin-top:6px;color:var(--muted);display:none;">
+      <em>Click the card again to hide this note.</em>
+    </div>
+  `;
+  li.addEventListener("click", () => {
+    const detail = li.querySelector(".moment-detail");
+    const isShown = detail.style.display === "block";
+    detail.style.display = isShown ? "none" : "block";
+  });
+
+  momentsList.appendChild(li);
+  updateCount();
+});
+
+// Helper: Simple HTML escape
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, (m) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[m]));
+}
+
+// Achievement count updates if you modify the list dynamically
+const achievementsList = document.getElementById("achievementsList");
+const achievementCount = document.getElementById("achievementCount");
+
+function updateCount() {
+  favoriteMomentsCount.textContent = momentsList.children.length;
+}
+
+// Optional: Observe changes to achievements list (if you add/remove later)
+const obs = new MutationObserver(() => {
+  achievementCount.textContent = achievementsList.children.length;
+});
+obs.observe(achievementsList, { childList: true });
+
+// Keyboard accessibility for cards
+momentsList.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && e.target.tagName === "LI") {
+    e.target.click();
+  }
+});
+  </script>
+  <script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+</body>
+</html>

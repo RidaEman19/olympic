@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    :root {
+  --bg: #f3f182;          
+  --surface: #f883b4;     
+  --card: #ffe4e4;        
+  --text: #000000;       
+  --muted: #9ca3af;      
+  --primary: #22c55e;     
+  --primary-600: #16a34a;
+  --danger: #ef4444;      
+  --warning: #f59e0b;     
+  --focus: #60a5fa;       
+}
+* { box-sizing: border-box; }
+
+body {
+  
+  margin: 0;
+  background-image: url(../image/ai-generated-8136169_1280.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+.container {
+  max-width: 550px;
+  margin: 6vh auto;
+  padding: 24px;
+  
+}
+
+form {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.field { margin-bottom: 4px; }
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #000000;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid rgba(229, 231, 235, 0.2);
+  border-radius: 10px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+
+input::placeholder { color: var(--muted); }
+
+input:focus {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+}
+
+.password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrap input {
+  padding-right: 40px;
+}
+
+.toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  width: 36px;
+  height: 30px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+}
+
+.toggle:hover { color: #000000; }
+.toggle:focus { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.hint {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.alert {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--danger);
+  min-height: 18px;
+}
+
+.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+input[type="checkbox"] {
+  width: 18px; height: 18px;
+  accent-color: var(--primary);
+}
+
+.submit {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #fce497;
+  color: #070706;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 120ms, background 120ms, box-shadow 120ms;
+  box-shadow: 0 12px 30px hsla(51, 85%, 52%, 0.952);
+}
+
+.submit:hover { background: var(--primary-600); transform: translateY(-1px); }
+.submit:active { transform: translateY(0); }
+
+.strength {
+  margin-top: 8px;
+  height: 8px;
+  background: #111827;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.strength span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #22c55e 100%);
+  transition: width 200ms ease;
+}
+#toast {
+  position: fixed;
+  inset: 16px auto auto 50%;
+  transform: translateX(-50%) translateY(-20px);
+  min-width: 280px;
+  max-width: 90vw;
+  background: #0b0f1a;
+  color: #316feb;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.4);
+  padding: 12px 14px;
+  border-radius: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index: 999;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+#toast.success { border-color: rgba(34,197,94,0.6); }
+#toast.error { border-color: rgba(239,68,68,0.6); }
+</style>
+   
+</head>
+<body>
+  
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <main class="container">
+    <form id="registerForm" novalidate>
+      <h1>login form</h1>
+
+      
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="name" required />
+        <p class="alert" id="nameAlert"></p>
+      </div>
+      <div class="field">
+        <label for="full name">full name</label>
+        <input type="text" id="name" name="name" placeholder="full name" required />
+        <p class="alert" id="nameAlert"></p>
+      </div>
+
+      
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input type="password" id="password" name="password" placeholder="At least 8 characters" required />
+          <button type="button" class="toggle" aria-label="Show password" aria-controls="password">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+        <div class="strength" id="strengthBar" aria-hidden="true">
+          <span></span>
+        </div>
+        <p class="hint">Use 8+ chars with letters, numbers, and a symbol.</p>
+        <p class="alert" id="passwordAlert"></p>
+      </div>
+
+      
+      <div class="field">
+        <label for="confirm">Confirm password</label>
+        <div class="password-wrap">
+          <input type="password" id="confirm" name="confirm" placeholder="Re-type your password" required />
+          <button type="button" class="toggle" aria-label="Show confirm password" aria-controls="confirm">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+        <p class="alert" id="confirmAlert"></p>
+      </div>
+
+      
+      <div class="field checkbox">
+        <label>
+          <input type="checkbox" id="terms" />
+          I agree to the Terms and Privacy Policy
+        </label>
+        <p class="alert" id="termsAlert"></p>
+      </div>
+
+    
+  <button type="button" class="submit">Login</button>
+</a> 
+
+    </form>
+  </main>
+<!-- <script>
+ 
+
+const $ = (sel) => document.querySelector(sel);
+
+const toast = (msg, type = "success") => {
+  const el = $("#toast");
+  el.textContent = msg;
+  el.className = ""; 
+  el.classList.add(type, "show");
+  setTimeout(() => el.classList.remove("show"), 2400);
+};
+
+const form = $("#registerForm");
+const nameInput = $("#name");
+const passwordInput = $("#password");
+const confirmInput = $("#confirm");
+const termsInput = $("#terms");
+
+const nameAlert = $("#nameAlert");
+const passwordAlert = $("#passwordAlert");
+const confirmAlert = $("#confirmAlert");
+const termsAlert = $("#termsAlert");
+const strengthBar = $("#strengthBar").querySelector("span");
+
+document.querySelectorAll(".toggle").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const targetId = btn.getAttribute("aria-controls");
+    const input = document.getElementById(targetId);
+
+    const isHidden = input.type === "password";
+    input.type = isHidden ? "text" : "password";
+
+    const icon = btn.querySelector("i");
+    icon.classList.toggle("fa-eye");
+    icon.classList.toggle("fa-eye-slash");
+
+    btn.setAttribute("aria-label", isHidden ? "Hide password" : "Show password");
+  });
+});
+
+const isEmail = (value) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+
+const passwordScore = (value) => {
+  let score = 0;
+  if (value.length >= 8) score += 25;
+  if (/[A-Z]/.test(value)) score += 20;
+  if (/[a-z]/.test(value)) score += 20;
+  if (/\d/.test(value)) score += 20;
+  if (/[^A-Za-z0-9]/.test(value)) score += 15;
+  return Math.min(score, 100);
+};
+
+const showStrength = (value) => {
+  const s = passwordScore(value);
+  strengthBar.style.width = s + "%";
+};
+
+passwordInput.addEventListener("input", (e) => {
+  const value = e.target.value;
+  showStrength(value);
+
+  if (value.length < 8) {
+    passwordAlert.textContent = "Password must be at least 8 characters.";
+  } else {
+    passwordAlert.textContent = "";
+  }
+
+  if (confirmInput.value.length) {
+    confirmAlert.textContent =
+      confirmInput.value !== value ? "Passwords do not match." : "";
+  }
+});
+
+confirmInput.addEventListener("input", (e) => {
+  confirmAlert.textContent =
+    e.target.value === passwordInput.value ? "" : "Passwords do not match.";
+});
+
+emailInput.addEventListener("blur", (e) => {
+  const value = e.target.value.trim();
+  emailAlert.textContent = isEmail(value) ? "" : "Enter a valid email address.";
+});
+
+nameInput.addEventListener("blur", (e) => {
+  const value = e.target.value.trim();
+  nameAlert.textContent = value ? "" : "Name is required.";
+});
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = nameInput.value.trim();
+
+  const password = passwordInput.value;
+  const confirm = confirmInput.value;
+
+  [nameAlert, emailAlert, passwordAlert, confirmAlert, termsAlert].forEach(
+    (el) => (el.textContent = "")
+  );
+
+  let valid = true;
+
+  if (!name) {
+    nameAlert.textContent = "Name is required.";
+    valid = false;
+  }
+  
+  
+  if (password.length < 8) {
+    passwordAlert.textContent = "Password must be at least 8 characters.";
+    valid = false;
+  }
+  if (confirm !== password) {
+    confirmAlert.textContent = "Passwords do not match.";
+    valid = false;
+  }
+  if (!termsInput.checked) {
+    termsAlert.textContent = "Please accept the Terms to continue.";
+    valid = false;
+  }
+
+  if (!valid) {
+    toast("Please fix the errors above.", "error");
+    return;
+  }
+
+  
+  const userData = {
+    name: name,
+    
+    password: password
+  };
+  console.log("User JSON:", JSON.stringify(userData));
+
+  toast("Account created successfully!", "success");
+
+  
+  window.location.href=""
+
+  form.reset();
+  strengthBar.style.width = "0%";
+  document.querySelectorAll(".toggle i").forEach((icon) => {
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  });
+  [passwordInput, confirmInput].forEach((inp) => (inp.type = "password"));
+
+});
+</script> -->
+<script>
+  // Password toggle (show/hide)
+  document.querySelectorAll(".toggle").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const input = document.getElementById(this.getAttribute("aria-controls"));
+      if (input.type === "password") {
+        input.type = "text";
+        this.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+      } else {
+        input.type = "password";
+        this.innerHTML = '<i class="fa-regular fa-eye"></i>';
+      }
+    });
+  });
+
+  // Handle login
+  document.querySelector(".submit").addEventListener("click", function () {
+    const name = document.getElementById("name").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirm = document.getElementById("confirm").value.trim();
+    const terms = document.getElementById("terms").checked;
+
+    const nameAlert = document.getElementById("nameAlert");
+    const passwordAlert = document.getElementById("passwordAlert");
+    const confirmAlert = document.getElementById("confirmAlert");
+    const termsAlert = document.getElementById("termsAlert");
+    const toast = document.getElementById("toast");
+
+    // Reset alerts
+    nameAlert.textContent = "";
+    passwordAlert.textContent = "";
+    confirmAlert.textContent = "";
+    termsAlert.textContent = "";
+    toast.textContent = "";
+
+    let valid = true;
+
+    if (name === "") {
+      nameAlert.textContent = "Name is required";
+      valid = false;
+    }
+
+    if (password.length < 8) {
+      passwordAlert.textContent = "Password must be at least 8 characters";
+      valid = false;
+    }
+
+    if (confirm !== password) {
+      confirmAlert.textContent = "Passwords do not match";
+      valid = false;
+    }
+
+    if (!terms) {
+      termsAlert.textContent = "You must agree to the terms";
+      valid = false;
+    }
+
+    if (valid) {
+      // Save user in localStorage
+      localStorage.setItem("user", JSON.stringify({ name, password }));
+
+      // Show toast
+      toast.textContent = "Login successful! Redirecting...";
+
+      // Redirect after short delay
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 1500);
+    }
+  });
+</script>
+</head>
+</body>
+
+
+
+
+

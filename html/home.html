@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Olympic | HOME</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+    <link rel="icon" type="image/png" href="..//image/olympic logo.jpg">
+</head>
+
+  <style>
+    
+:root {
+      --text: #fff;
+      --accent: #ffcc00;
+      --muted: #ccc;
+      --gold: #ffd700;
+      --silver: #c0c0c0;
+      --bronze: #cd7f32;
+    }
+
+    /* Navbar */
+    .olympic-navbar {
+      background: linear-gradient(90deg, #116130, #191177);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-bottom: 2px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .rings {
+      width: 110px;
+      height: 50px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: yellowgreen;
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Mobile menu */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #0c3f1f;
+        flex-direction: column;
+        width: 220px;
+        display: none;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Responsive cards */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+
+    .cards {
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .cards img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-content {
+      padding: 1rem;
+      color: var(--text);
+    }
+
+    /* Responsive text */
+    h1.relataed, h2.ht {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      text-align: center;
+    }
+
+    .home .content h3 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+    .home .content span {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    .home .content p {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+
+
+.olympic-navbar {
+  background: linear-gradient(90deg, #116130, #191177);
+  color: var(--text);
+  padding-right: 20px;
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.py-5{background: linear-gradient(90deg, #0c3f1f, #150f52); }
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.rings {
+  width: 110px;
+  height: 50px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+  
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: yellowgreen;
+  transition: width .3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--accent), #ff7a1a);
+  color: #0a0c12;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-cta:hover {
+  filter: brightness(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; 
+  }
+}
+
+    .col-lg-6{margin-top: 9%;}
+    .hero {
+      background-image: url(../image/athletes-1867185_1920.jpg);
+      color: #ffffff;
+   
+  height: 550px;
+       background-size: cover;
+       position: relative;
+    }
+    .section-title {
+      font-weight: 700;
+    }
+    .brand-text {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-left: 8px;
+    }
+    .footer {
+      
+      padding: 24px 0;
+      margin-top: 40px;
+    }
+  #mainNav{font-size: 17px;  }
+  
+
+* { box-sizing: border-box; }
+
+.olympic-footer {
+  color: var(--text);
+
+   background: linear-gradient(90deg,#205c08, #0d1364);
+  padding: 2rem 1rem 1rem;
+  border-top: 2px solid rgba(255,255,255,0.06);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.olympic-footer a { color: var(--text); text-decoration: none; }
+.olympic-footer a:hover { color: white; text-decoration: underline; }
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rings { width: 220px; height: 100px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));max-width: 200px; padding-right: 20px;padding: auto;}
+
+.countdown {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .5rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.countdown-label { color: var(--text); }
+.countdown-event { color: var(--accent); }
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1rem;
+  justify-content: flex-end;
+}
+.quick-links a {
+  padding: .4rem .65rem;
+  border-radius: .5rem;
+  background: rgba(255,255,255,0.06);
+}
+.quick-links a:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Middle section */
+.footer-middle {
+  display: grid;
+  grid-template-columns: 0.8fr 0.8fr 1.5fr;
+  gap: 2rem;
+  padding: 1.25rem 0;
+}
+
+.past-games h3,
+.social h3,
+.newsletter h3 {
+  margin: 0 0 .5rem;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.past-games ul,
+.social ul {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: grid;
+  gap: .4rem;
+}
+
+.past-games a {
+  display: inline-block;
+  padding: .3rem .5rem;
+  border-radius: .4rem;
+  background: rgba(255,255,255,0.05);
+}
+.past-games a:hover { background: rgba(255,255,255,0.12); }
+
+.social-news {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.medal {
+  display: inline-block;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #0a0c12;
+  background: var(--gold);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.3);
+}
+.medal-gold { background: var(--gold); }
+.medal-silver { background: var(--silver); }
+.medal-bronze { background: var(--bronze); }
+.social li { display: inline; margin-right: .5rem; }
+
+.newsletter {
+
+  gap: .5rem;
+  align-items: center;
+}
+.newsletter input {
+  width: 100%;
+  padding: .6rem .75rem;
+  border-radius: .5rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+}
+.newsletter input::placeholder { color: #cbd2e3; }
+
+.newsletter button {
+  padding: .6rem .9rem;
+  border-radius: .5rem;
+  border: 0;
+  background: linear-gradient(135deg, var(--accent), #ff7a1a);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.newsletter button:hover { filter: brightness(1.05); }
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .78rem 2.1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  
+}
+.footer-bottom p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .rings { width: 180px; height: 80px; }
+  .footer-middle {
+    grid-template-columns: 1fr;
+  }
+  .social-news {
+    grid-template-columns: 1fr;
+  }
+  .quick-links { justify-content: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+  .brand { flex-wrap: wrap; }
+  .newsletter {
+    grid-template-columns: 1fr;
+  }
+}
+.games{
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 2rem;
+ 
+ background-color: #110f53;
+}
+.card {
+      background: linear-gradient(90deg, #116130, #594ddb);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s;
+      height: 400px;
+    }
+
+    .card:hover { transform: translateY(-10px); }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card h3 { margin-bottom: 0.5rem; }
+    .card p { font-size: 0.9rem; margin-bottom: 1rem; color: #ccc; }
+    .card .price { font-weight: bold; margin-bottom: 1rem; }
+
+    .card button {
+      width: 100%;
+      padding: 0.7rem;
+      background: #08067e;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .card button:hover { background: #0a880a; }
+.medal-gold{background: #02589e;}
+.medal-silver{background: rgb(177, 10, 46);}
+.medal-bronze{background: rgb(0, 0, 0);}
+.nav-title{font-weight: bold;font-size: 30px; ;}
+.bg-light{background-color: #2a375e;}
+  </style>
+</head>
+<body style="background-color: #273357; color: white;" >
+<!-- Olympic Navbar -->
+<header class="olympic-navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="" class="nav-logo" aria-label="Olympic Home">
+      <svg class="rings" viewBox="0 0 220 100" aria-hidden="true">
+        <circle cx="40" cy="50" r="25" stroke="#0072CE" fill="none" stroke-width="6"/>
+        <circle cx="85" cy="50" r="25" stroke="#FECB00" fill="none" stroke-width="6"/>
+        <circle cx="130" cy="50" r="25" stroke="#000000" fill="none" stroke-width="6"/>
+        <circle cx="60" cy="75" r="25" stroke="#00A651" fill="none" stroke-width="6"/>
+        <circle cx="105" cy="75" r="25" stroke="#EE1C25" fill="none" stroke-width="6"/>
+      </svg>
+      <span class="nav-title">Olympics</span>
+    </a>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      
+       <a href="news.html">News</a>
+       <a href="game.html">Games</a>
+      <a href="gallery.html">gallery</a>
+     
+      <a href="aboutus.html">About Us</a>
+      <a href="login.html">Login</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="athletes.html">athlethes</a>
+    </nav>
+  </div>
+</header>
+
+
+
+
+
+
+  <!-- Hero -->
+  <section class="hero" style="z-index: 0;">
+    <div class="ll" style="z-index: 2;">
+    <div class="container" style="z-index: 1;">
+      <div class="row align-items-center gy-4" >
+        <div class="col-lg-6" >
+        
+          <h1 class="display-5 fw-bold">Welcome to the Olympic Games</h1>
+          <p class="lead mt-3">Discover events, athletes, schedules, and live results—all in one place.</p>
+          <div class="mt-4">
+            <a href="news.html" class="btn btn-light btn-lg me-2">News</a>
+            <a href="athletes.html" class="btn btn-outline-light btn-lg">Athletes</a>
+          </div> </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="games">
+    <div class="card">
+      <img src="../image/Discover What is Ecommerce_ A Comprehensive Guide to Online Business Essentials_1.jpg" alt="Game 1">
+      <div class="card-content">
+        <h3>Cyber Quest</h3>
+        <p>Embark on a futuristic adventure through neon cities.</p>
+        <div class="price">$59.99</div>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="../image/ai-generated-8136169_1280.png" alt="Game 2">
+      <div class="card-content">
+        <h3>Dragon Realms</h3>
+        <p>Fight dragons and explore magical kingdoms.</p>
+        <div class="price">$49.99</div>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+     <div class="card">
+      <img src="../image/p 2.jpg" alt="Game 2">
+      <div class="card-content">
+        <h3>football</h3>
+        <p>Fight dragons and explore magical kingdoms.</p>
+        <div class="price">$49.99</div>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+     <div class="card">
+      <img src="../image/boxing-6791801_1280.jpg" alt="Game 2">
+      <div class="card-content">
+        <h3>boxing</h3>
+        <p>Fight dragons and explore magical kingdoms.</p>
+        <div class="price">$49.99</div>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+     <div class="card">
+      <img src="../image/card-game-1897030_1280.jpg" alt="Game 2">
+      <div class="card-content">
+        <h3>bezique card game</h3>
+        <p>It is only a few years since it was first introduced in Paris.</p>
+        <div class="price">$49.99</div>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+     <div class="card">
+      <img src="../image/st-andrews-1591274_1280.jpg" alt="Game 2">
+      <div class="card-content">
+        <h3>golf</h3>
+        <p>Golf is a club-and-ball sport in which players use various clubs to hit.</p>
+        <div class="price">$49.99</div>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+     <div class="card">
+      <img src="../image/swimmers-79592_1920 (1).jpg" alt="Game 2">
+      <div class="card-content">
+        <h3>pool </h3>
+        <p>Pool is a series of cue sports played on a billiard table.</p>
+        <div class="price">$49.99</div>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+     <div class="card">
+      <img src="../image/chess-1702761_1280.jpg" alt="Game 2">
+      <div class="card-content">
+        <h3>shogi borad</h3>
+        <p>Shogi is also known as Japanese chess is a strategy board game for two players.</p>
+        <div class="price">$49.99</div>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  
+  
+
+  <!-- Olympic Footer -->
+<footer class="olympic-footer " aria-label="Site footer">
+  <div class=" container">
+
+  <div class="footer-top container">
+    <div class="brand">
+      <!-- Minimal SVG Olympic rings -->
+      <svg class="rings" viewBox="0 0 220 100" aria-hidden="true">
+        <circle cx="40" cy="50" r="25" stroke="#0072CE" fill="none" stroke-width="6"/>
+        <circle cx="85" cy="50" r="25" stroke="#FECB00" fill="none" stroke-width="6"/>
+        <circle cx="130" cy="50" r="25" stroke="#000000" fill="none" stroke-width="6"/>
+        <circle cx="60" cy="75" r="25" stroke="#00A651" fill="none" stroke-width="6"/>
+        <circle cx="105" cy="75" r="25" stroke="#EE1C25" fill="none" stroke-width="6"/>
+      </svg>
+
+      <div class="countdown" role="text" aria-live="polite">
+        <span class="countdown-label">Countdown:</span>
+        <span class="countdown-event">Paris 2028</span>
+        <span class="countdown-sep">—</span>
+        <span class="countdown-time" data-static="945 Days">945 Days</span>
+      </div>
+    </div>
+
+    <nav class="quick-links" aria-label="Quick links">
+      <a href="home.html">Home</a>
+      <a href="athletes.html">Athletes</a>
+      <a href="/schedule">Schedule</a>
+      <a href="news.html">olympic news</a>
+      <a href="game.html">events</a>
+    </nav>
+  </div>
+
+  <div class="footer-middle">
+    <div class="past-games" aria-label="Past Games">
+      <h3>Past Games</h3>
+      <ul>
+        <li><a href="/past/tokyo-2020">Tokyo 2020</a></li>
+        <li><a href="/past/beijing-2008">Beijing 2008</a></li>
+        <li><a href="/past/athens-2004">Athens 2004</a></li>
+        <li><a href="/past">More…</a></li>
+      </ul>
+    </div>
+    <div class="past-games" aria-label="Past Games">
+      <h3>Past Games</h3>
+      <ul>
+        <li><a href="/past/tokyo-2020">Tokyo 2020</a></li>
+        <li><a href="/past/beijing-2008">Beijing 2008</a></li>
+        <li><a href="/past/athens-2004">Athens 2004</a></li>
+        <li><a href="/past">More…</a></li>
+      </ul>
+    </div>
+    <div class="social-news">
+      <div class="social" aria-label="Follow us">
+        <h3>Follow us</h3>
+        <ul>
+        <li><a class="medal medal-silver" href="https://www.instagram.com/httpps.h/" aria-label="Instagram">Instagram</a></li>
+          <li><a class="medal medal-gold" href="https://www.facebook.com/login/" aria-label="Facebook">Facebook</a></li>
+          <li><a class="medal medal-bronze" href="#" aria-label="TikTok">TikTok</a></li>
+        </ul>
+      </div>
+
+      <form class="newsletter" aria-label="Newsletter signup">
+        <h3>Join the Olympic Movement</h3>
+        <label for="email" class="visually-hidden">Email address</label>
+        <input id="email" name="email" type="email" placeholder="Your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© International Olympic Committee</p>
+    <p>Powered by Olympic Spirit</p>
+  </div>
+</div>
+
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+</body>
+</html>
+
